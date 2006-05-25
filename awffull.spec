@@ -35,4 +35,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog COPYING INSTALL README TODO
 %attr(755,root,root) %{_bindir}/awffull
-%doc %{_mandir}/man1/awffull*
+%{_mandir}/man1/awffull*
