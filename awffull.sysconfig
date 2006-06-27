@@ -9,8 +9,13 @@ ENABLE="no"
 # Allow multiple configs in /etc/awffull/
 MULTIPLE="yes"
 
+# Use dnshistory for resolving IP into DNS-name
+# Warning: you need to install dnshistory package to have it working!
+# USE_DNSHISTORY="yes"
+
 # Supress messages
 # QUIET="yes"
 
 # Don't display any messages
 #REALLY_QUIET="yes"
+

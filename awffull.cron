@@ -1,6 +1,7 @@
 #!/bin/sh
 
 AWFFULL_OPTS=""
+CONFIG_LIST=""
 [ -f /etc/sysconfig/awffull ] && . /etc/sysconfig/awffull
 umask 0022
 
@@ -16,11 +17,19 @@ if [ -n "$ENABLE" ] && [ "$ENABLE" = "yes" -o "$ENABLE" = "YES" ]; then
 	fi
 	
 	if [ -f /etc/awffull.conf ]; then
-		awffull ${AWFFULL_OPTS} -c /etc/awffull.conf
+		CONFIG_LIST="/etc/awffull.conf"
 	fi
 	if [ -n "$MULTIPLE" ] && [ "$MULTIPLE" = "yes" -o "$MULTIPLE" = "YES" ]; then
-		for i in $(ls /etc/awffull/*.conf 2>/dev/null); do
-			awffull ${AWFFULL_OPTS} -c $i;
+		for config in $(ls /etc/awffull/*.conf 2>/dev/null); do\
+			CONFIG_LIST="${CONFIG_LIST} ${config}"
 		done
 	fi
+	for singleconfig in ${CONFIG_LIST}; do
+		if [ -n "${USE_DNSHISTORY}" ] && [ "${USE_DNSHISTORY}" = "yes" -o "${USE_DNSHISTORY}" = "YES" ]; then
+			LOGFILE=`grep ^LogFile ${singleconfig} | awk '{ print $2;}'`
+			dnshistory -T -f ${LOGFILE} | awffull ${AWFFULL_OPTS} -c ${singleconfig} - ;
+		else
+			awffull ${AWFFULL_OPTS} -c ${singleconfig};
+		fi
+	done
 fi
