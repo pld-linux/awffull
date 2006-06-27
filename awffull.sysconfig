@@ -1,0 +1,16 @@
+# Customized settings for awffull
+
+# Enable cron [yes|no]
+ENABLE="no"
+
+# Output language
+# LANG="pl_PL"
+
+# Allow multiple configs in /etc/awffull/
+MULTIPLE="yes"
+
+# Supress messages
+# QUIET="yes"
+
+# Don't display any messages
+#REALLY_QUIET="yes"

@@ -1,0 +1,4 @@
+#
+# cron job for the awffull
+#
+05 * * * *	stats	/usr/sbin/awffull.cron

@@ -1,0 +1,26 @@
+#!/bin/sh
+
+AWFFULL_OPTS=""
+[ -f /etc/sysconfig/awffull ] && . /etc/sysconfig/awffull
+umask 0022
+
+if [ -n "$ENABLE" ] && [ "$ENABLE" = "yes" -o "$ENABLE" = "YES" ]; then
+	LC_ALL=$LANG
+	export LANG
+	export LC_ALL
+	
+	if [ -n "$REALLY_QUIET" ] && [ "$REALLY_QUIET" = "yes" -o "$REALLY_QUIET" = "YES" ]; then
+		AWFFULL_OPTS="-Q"
+	elif [ -n "$QUIET" ] && [ "$QUIET" = "yes" -o "$QUIET" = "YES" ]; then
+		AWFFULL_OPTS="-q"
+	fi
+	
+	if [ -f /etc/awffull.conf ]; then
+		awffull ${AWFFULL_OPTS} -c /etc/awffull.conf
+	fi
+	if [ -n "$MULTIPLE" ] && [ "$MULTIPLE" = "yes" -o "$MULTIPLE" = "YES" ]; then
+		for i in $(ls /etc/awffull/*.conf 2>/dev/null); do
+			awffull ${AWFFULL_OPTS} -c $i;
+		done
+	fi
+fi
