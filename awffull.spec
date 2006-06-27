@@ -1,13 +1,19 @@
+# TODO:
+# - convertion tool: webalizer -> awffull 
+#
 Summary:	Web server log analysis program
 Summary(pl):	Program do analizy logów serwera WWW
 Name:		awffull
 Version:	3.4.1
-Release:	0.1
-License:	GPL
+Release:	0.3
+License:	GPL v2
 Group:		Applications/Networking
 Source0:	http://www.stedee.id.au/files/%{name}-%{version}.tar.gz
 # Source0-md5:	9b1ff7694d62f42dcf44832a7e163ce5
-URL:		http://www.stedee.id.au/awffull
+Source1:	%{name}.sysconfig
+Source2:	%{name}.cron
+Source3:	%{name}.crontab
+URL:		http://www.stedee.id.au/awffull/
 BuildRequires:	gd-devel
 BuildRequires:	pcre-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -32,14 +38,26 @@ wykresów ko³owych.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{_sysconfdir}/{%{name},sysconfig,cron.d},%{_sbindir}}
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+install sample.conf $RPM_BUILD_ROOT%{_sysconfdir}/%{name}.conf
+install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/%{name}
+install %{SOURCE2} $RPM_BUILD_ROOT%{_sbindir}/%{name}.cron
+install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/cron.d/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog COPYING INSTALL README TODO
-%attr(755,root,root) %{_bindir}/awffull
+%doc ChangeLog *README* TODO
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}.conf
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/cron.d/%{name}
+%config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/%{name}
+%attr(2755,root,stats) %dir %{_sysconfdir}/%{name}
+%attr(755,root,root) %{_bindir}/%{name}
+%attr(755,root,root) %{_sbindir}/%{name}.cron
 %{_mandir}/man1/awffull*
