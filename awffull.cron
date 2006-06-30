@@ -26,9 +26,9 @@ if [ -n "$ENABLE" ] && [ "$ENABLE" = "yes" -o "$ENABLE" = "YES" ]; then
 	fi
 	for singleconfig in ${CONFIG_LIST}; do
 		if [ -n "${USE_DNSHISTORY}" ] && [ "${USE_DNSHISTORY}" = "yes" -o "${USE_DNSHISTORY}" = "YES" ]; then
-			TMPCONFIG=`mktemp -q /var/lib/dnshistory.XXXXXX`
+			TMPCONFIG=`mktemp -q /var/lib/dnshistory/awffull_config.XXXXXX`
 			LOGFILE=`grep ^LogFile ${singleconfig} | awk '{ print $2;}'`
-			grep ^LogFile ${singleconfig} > ${TMPCONFIG}
+			grep -v ^LogFile ${singleconfig} > ${TMPCONFIG}
 			dnshistory -T -f ${LOGFILE} | awffull ${AWFFULL_OPTS} -c ${TMPCONFIG} - ;
 			rm -f ${TMPCONFIG}
 		else
