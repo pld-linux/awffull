@@ -16,14 +16,14 @@ if [ -n "$ENABLE" ] && [ "$ENABLE" = "yes" -o "$ENABLE" = "YES" ]; then
 		AWFFULL_OPTS="-q"
 	fi
 	
-	if [ -f /etc/awffull.conf ]; then
-		CONFIG_LIST="/etc/awffull.conf"
-	fi
 	if [ -n "$MULTIPLE" ] && [ "$MULTIPLE" = "yes" -o "$MULTIPLE" = "YES" ]; then
 		for config in $(ls /etc/awffull/*.conf 2>/dev/null); do\
 			CONFIG_LIST="${CONFIG_LIST} ${config}"
 		done
+	else
+		CONFIG_LIST="/etc/awffull.conf"
 	fi
+
 	for singleconfig in ${CONFIG_LIST}; do
 		if [ -n "${USE_DNSHISTORY}" ] && [ "${USE_DNSHISTORY}" = "yes" -o "${USE_DNSHISTORY}" = "YES" ]; then
 			TMPCONFIG=`mktemp -q /var/lib/dnshistory/awffull_config.XXXXXX`

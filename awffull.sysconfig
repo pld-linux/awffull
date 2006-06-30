@@ -7,6 +7,9 @@ ENABLE="no"
 # LANG="pl_PL"
 
 # Allow multiple configs in /etc/awffull/
+# Files must have names: *.conf
+# Warning: it disables parsing /etc/awffull.conf. If you want to make use
+# of that file - move it into /etc/awffull/
 MULTIPLE="yes"
 
 # Use dnshistory for resolving IP into DNS-name
