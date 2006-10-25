@@ -40,16 +40,16 @@ wykresów ko³owych.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sysconfdir}/{%{name},sysconfig,cron.d},%{_sbindir}}
+install -d $RPM_BUILD_ROOT{%{_sysconfdir}/%{name},/etc/{sysconfig,cron.d},%{_sbindir}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install sample.conf $RPM_BUILD_ROOT%{_sysconfdir}/%{name}.conf
 install %{name}_history_regen.pl %{_sbindir}
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/%{name}
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/%{name}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sbindir}/%{name}.cron
-install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/cron.d/%{name}
+install %{SOURCE3} $RPM_BUILD_ROOT/etc/cron.d/%{name}
 
 %find_lang %{name}
 
@@ -59,10 +59,10 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc ChangeLog *README* TODO flags
+%attr(2755,root,stats) %dir %{_sysconfdir}/%{name}
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}.conf
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/cron.d/%{name}
 %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/%{name}
-%attr(2755,root,stats) %dir %{_sysconfdir}/%{name}
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_sbindir}/%{name}.cron
 %attr(755,root,root) %{_sbindir}/%{name}_history_regen.pl
