@@ -1,12 +1,8 @@
-# TODO:
-# - convertion tool: webalizer -> awffull - included in package
-# - enable GeoIP support
-#
 Summary:	Web server log analysis program
 Summary(pl):	Program do analizy logów serwera WWW
 Name:		awffull
 Version:	3.7.1
-Release:	0.1
+Release:	1
 License:	GPL v2
 Group:		Applications/Networking
 Source0:	http://www.stedee.id.au/files/%{name}-%{version}.tar.gz
@@ -15,6 +11,7 @@ Source1:	%{name}.sysconfig
 Source2:	%{name}.cron
 Source3:	%{name}.crontab
 URL:		http://www.stedee.id.au/awffull/
+BuildRequires:	GeoIP-devel > 1.4.0-1
 BuildRequires:	gd-devel
 BuildRequires:	gettext-devel
 BuildRequires:	pcre-devel
@@ -46,6 +43,7 @@ install -d $RPM_BUILD_ROOT{%{_sysconfdir}/{%{name},sysconfig,cron.d},%{_sbindir}
 	DESTDIR=$RPM_BUILD_ROOT
 
 install sample.conf $RPM_BUILD_ROOT%{_sysconfdir}/%{name}.conf
+install %{name}_history_regen.pl %{_sbindir}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/%{name}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sbindir}/%{name}.cron
 install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/cron.d/%{name}
@@ -64,4 +62,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(2755,root,stats) %dir %{_sysconfdir}/%{name}
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_sbindir}/%{name}.cron
+%attr(755,root,root) %{_sbindir}/%{name}_history_regen.pl
 %{_mandir}/man1/awffull*
