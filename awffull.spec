@@ -1,20 +1,22 @@
 # TODO:
-# - convertion tool: webalizer -> awffull 
+# - convertion tool: webalizer -> awffull - included in package
+# - enable GeoIP support
 #
 Summary:	Web server log analysis program
 Summary(pl):	Program do analizy logów serwera WWW
 Name:		awffull
-Version:	3.5.1
-Release:	3
+Version:	3.7.1
+Release:	0.1
 License:	GPL v2
 Group:		Applications/Networking
 Source0:	http://www.stedee.id.au/files/%{name}-%{version}.tar.gz
-# Source0-md5:	065903e2f710969e77164da71df56ffb
+# Source0-md5:	f1cf872a64780b9b83432840d6da18a0
 Source1:	%{name}.sysconfig
 Source2:	%{name}.cron
 Source3:	%{name}.crontab
 URL:		http://www.stedee.id.au/awffull/
 BuildRequires:	gd-devel
+BuildRequires:	gettext-devel
 BuildRequires:	pcre-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -48,10 +50,12 @@ install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/%{name}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sbindir}/%{name}.cron
 install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/cron.d/%{name}
 
+%find_lang %{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc ChangeLog *README* TODO
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}.conf
