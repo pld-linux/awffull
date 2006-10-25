@@ -13,6 +13,7 @@ Source0:	http://www.stedee.id.au/files/%{name}-%{version}.tar.gz
 Source1:	%{name}.sysconfig
 Source2:	%{name}.cron
 Source3:	%{name}.crontab
+Patch0:		%{name}-no_css_overwrite_warning.patch
 URL:		http://www.stedee.id.au/awffull/
 BuildRequires:	GeoIP-devel > 1.4.0-1
 BuildRequires:	gd-devel
@@ -33,6 +34,7 @@ wykresów ko³owych.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure
@@ -46,7 +48,7 @@ install -d $RPM_BUILD_ROOT{%{_sysconfdir}/%{name},/etc/{sysconfig,cron.d},%{_sbi
 	DESTDIR=$RPM_BUILD_ROOT
 
 install sample.conf $RPM_BUILD_ROOT%{_sysconfdir}/%{name}.conf
-install %{name}_history_regen.pl %{_sbindir}
+install %{name}_history_regen.pl $RPM_BUILD_ROOT%{_sbindir}
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/%{name}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sbindir}/%{name}.cron
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/cron.d/%{name}
