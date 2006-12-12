@@ -29,11 +29,11 @@ if [ -n "$ENABLE" ] && [ "$ENABLE" = "yes" -o "$ENABLE" = "YES" ]; then
 			TMPCONFIG=`mktemp -q /var/lib/dnshistory/awffull_config.XXXXXX`
 			LOGFILE=`grep ^LogFile ${singleconfig} | awk '{ print $2;}'`
 			grep -v ^LogFile ${singleconfig} > ${TMPCONFIG}
-			dnshistory -f ${LOGFILE}
-			dnshistory -T -f ${LOGFILE} | awffull ${AWFFULL_OPTS} -c ${TMPCONFIG} - ;
+			nice -n 19 dnshistory -f ${LOGFILE}
+			nice -n 19 dnshistory -T -f ${LOGFILE} | awffull ${AWFFULL_OPTS} -c ${TMPCONFIG} - ;
 			rm -f ${TMPCONFIG}
 		else
-			awffull ${AWFFULL_OPTS} -c ${singleconfig};
+			nice -n 19 awffull ${AWFFULL_OPTS} -c ${singleconfig};
 		fi
 	done
 fi
