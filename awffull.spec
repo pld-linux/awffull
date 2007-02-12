@@ -2,7 +2,7 @@
 # - install flags in %{datadir}/%{name} and make config for apache
 # - patch config in package and fix paths
 Summary:	Web server log analysis program
-Summary(pl):	Program do analizy logów serwera WWW
+Summary(pl.UTF-8):   Program do analizy logÃ³w serwera WWW
 Name:		awffull
 Version:	3.7.1
 Release:	1
@@ -26,11 +26,11 @@ AWFFull is a Web server log analysis program, forked from Webalizer.
 It adds a number of new features and improvements, such as extended
 frontpage history, resizable graphs, and a few more pie charts.
 
-%description -l pl
-AWFFull to program do analizy logów serwer WWW wywodz±cy siê z
-Webalizera. Dodaje wiele nowych mo¿liwo¶ci i ulepszeñ, takich jak
-rozszerzona historia strony g³ównej, skalowalne wykresy i nieco wiêcej
-wykresów ko³owych.
+%description -l pl.UTF-8
+AWFFull to program do analizy logÃ³w serwer WWW wywodzÄ…cy siÄ™ z
+Webalizera. Dodaje wiele nowych moÅ¼liwoÅ›ci i ulepszeÅ„, takich jak
+rozszerzona historia strony gÅ‚Ã³wnej, skalowalne wykresy i nieco wiÄ™cej
+wykresÃ³w koÅ‚owych.
 
 %prep
 %setup -q
