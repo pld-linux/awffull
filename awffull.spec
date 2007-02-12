@@ -2,7 +2,7 @@
 # - install flags in %{datadir}/%{name} and make config for apache
 # - patch config in package and fix paths
 Summary:	Web server log analysis program
-Summary(pl.UTF-8):   Program do analizy logów serwera WWW
+Summary(pl.UTF-8):	Program do analizy logów serwera WWW
 Name:		awffull
 Version:	3.7.1
 Release:	1
