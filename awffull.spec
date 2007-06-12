@@ -4,12 +4,12 @@
 Summary:	Web server log analysis program
 Summary(pl.UTF-8):	Program do analizy logów serwera WWW
 Name:		awffull
-Version:	3.7.4
+Version:	3.7.5
 Release:	1
 License:	GPL v2
 Group:		Applications/Networking
 Source0:	http://www.stedee.id.au/files/%{name}-%{version}.tar.gz
-# Source0-md5:	7bba3be624cadd356edb944cd40c342a
+# Source0-md5:	6f0cdc9095ff3310e7ccd3cee0ceeba3
 Source1:	%{name}.sysconfig
 Source2:	%{name}.cron
 Source3:	%{name}.crontab
@@ -48,7 +48,7 @@ install -d $RPM_BUILD_ROOT{%{_sysconfdir}/%{name},/etc/{sysconfig,cron.d},%{_sbi
 	DESTDIR=$RPM_BUILD_ROOT
 
 install sample.conf $RPM_BUILD_ROOT%{_sysconfdir}/%{name}.conf
-install %{name}_history_regen.pl $RPM_BUILD_ROOT%{_sbindir}
+install contrib/%{name}_history_regen.pl $RPM_BUILD_ROOT%{_sbindir}
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/%{name}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sbindir}/%{name}.cron
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/cron.d/%{name}
