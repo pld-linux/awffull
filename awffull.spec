@@ -5,7 +5,7 @@ Summary:	Web server log analysis program
 Summary(pl.UTF-8):	Program do analizy logów serwera WWW
 Name:		awffull
 Version:	3.7.5
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/Networking
 Source0:	http://www.stedee.id.au/files/%{name}-%{version}.tar.gz
@@ -14,6 +14,7 @@ Source1:	%{name}.sysconfig
 Source2:	%{name}.cron
 Source3:	%{name}.crontab
 Patch0:		%{name}-no_css_overwrite_warning.patch
+Patch1:		%{name}-geoip.patch 
 URL:		http://www.stedee.id.au/awffull/
 BuildRequires:	GeoIP-devel > 1.4.0-1
 BuildRequires:	gd-devel
@@ -35,6 +36,7 @@ wykresów kołowych.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %configure
