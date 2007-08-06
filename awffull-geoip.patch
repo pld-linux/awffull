@@ -1,0 +1,11 @@
+--- ./src/awffull.h.org	2007-05-07 13:42:45.000000000 +0200
++++ ./src/awffull.h	2007-08-06 16:11:59.000000000 +0200
+@@ -43,7 +43,7 @@
+ 
+ #define SITE_ADDRESS        "http://www.stedee.id.au/awffull/"
+ 
+-#define GEOIP_DATABASE      "/usr/local/share/GeoIP/GeoIP.dat"
++#define GEOIP_DATABASE      "/usr/share/GeoIP/GeoIP.dat"
+ 
+ #define DATE_TIME_FORMAT "%d/%b/%Y:%H:%M:%S"    /* Default DATE_TIME format for input to strptime */
+ #define DATE_TIME_XFERLOG_FORMAT "%a %b %d %H:%M:%S %Y"
