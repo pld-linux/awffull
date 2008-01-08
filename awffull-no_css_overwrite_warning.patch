@@ -1,11 +1,11 @@
---- ./src/css_file.c.org	2007-05-08 19:08:28.000000000 +0000
-+++ ./src/css_file.c	2007-05-08 19:10:27.000000000 +0000
-@@ -126,7 +126,7 @@
+--- ./src/css_file.c.org	2007-11-14 06:57:22.000000000 +0100
++++ ./src/css_file.c	2008-01-08 23:16:37.673642669 +0100
+@@ -129,7 +129,7 @@ generate_css_file(void)
          snprintf(lineout, sizeof(lineout), "%s\n", css[i]);
          write_rtn = write(cssfile, lineout, strlen(lineout));
          if (write_rtn == -1 && css_exists_warning == false && css_created == false) {
--            ERRVPRINT(VERBOSE1, _("CSS File \"%s\" Exists. Not writing a new one.\n"), css_filename);
-+            VPRINT(VERBOSE1, _("CSS File \"%s\" Exists. Not writing a new one.\n"), css_filename);
+-            ERRVPRINT(VERBOSE1, _("CSS File \"%s\" Exists. Not writing a new one.\n"), g_settings.settings.css_filename);
++            VPRINT(VERBOSE1, _("CSS File \"%s\" Exists. Not writing a new one.\n"), g_settings.settings.css_filename);
              css_exists_warning = true;
              break;
          }
