@@ -1,0 +1,6 @@
+--- awffull-3.8.2/po/LINGUAS~	2007-06-04 14:42:45.000000000 +0200
++++ awffull-3.8.2/po/LINGUAS	2008-01-10 22:08:24.994493230 +0100
+@@ -1,2 +1,2 @@
+ # AWFFull: Supported Languages
+-ca cs da de el es et fi fr gl hr hu id is it ja ko lv ml nl no pl pt pt_BR ro ru sl sr sv tr uk zh
++ca cs da de el es et fi fr gl hr hu id is it ja ko lv ml nb nl pl pt pt_BR ro ru sl sr sv tr uk zh_CN
