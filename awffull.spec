@@ -4,12 +4,12 @@
 Summary:	Web server log analysis program
 Summary(pl.UTF-8):	Program do analizy logów serwera WWW
 Name:		awffull
-Version:	3.8.2
-Release:	3
+Version:	3.10.2
+Release:	1
 License:	GPL v2
 Group:		Applications/Networking
 Source0:	http://www.stedee.id.au/files/%{name}-%{version}.tar.gz
-# Source0-md5:	24c972e1feefb223f0a8d4528dabe8c4
+# Source0-md5:	90c1b0137ce687d06e56c49b854d41c1
 Source1:	%{name}.sysconfig
 Source2:	%{name}.cron
 Source3:	%{name}.crontab
@@ -77,4 +77,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_sbindir}/%{name}.cron
 %attr(755,root,root) %{_sbindir}/%{name}_history_regen.pl
-%{_mandir}/man1/awffull*
+%{_mandir}/man[15]/awffull*
