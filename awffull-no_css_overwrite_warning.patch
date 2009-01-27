@@ -1,5 +1,5 @@
---- css_file.c.orig	2009-01-27 14:19:21.317533684 +0100
-+++ css_file.c	2009-01-27 14:19:26.676913960 +0100
+--- ./src/css_file.c.orig	2009-01-27 14:19:21.317533684 +0100
++++ ./src/css_file.c	2009-01-27 14:19:26.676913960 +0100
 @@ -140,7 +140,7 @@
                      snprintf(lineout, sizeof(lineout), "%s\n", css[i]);
                      write_rtn = write(cssfile, lineout, strlen(lineout));
