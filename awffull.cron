@@ -5,6 +5,13 @@ CONFIG_LIST=""
 [ -f /etc/sysconfig/awffull ] && . /etc/sysconfig/awffull
 umask 0022
 
+if [ -n "$FORCE_USER" ]; then
+	if [ "$FORCE_USER" != "`id -un`" ]; then
+		echo "Wrong current user. $FORCE_USER is required!"
+		exit 1
+	fi
+fi
+
 if [ -n "$ENABLE" ] && [ "$ENABLE" = "yes" -o "$ENABLE" = "YES" ]; then
 	LC_ALL=$LANG
 	export LANG

@@ -4,7 +4,7 @@
 ENABLE="no"
 
 # Output language
-# LANG="pl_PL"
+# LANG="pl_PL.UTF-8"
 
 # Allow multiple configs in /etc/awffull/
 # Files must have names: *.conf
@@ -20,5 +20,7 @@ MULTIPLE="yes"
 # QUIET="yes"
 
 # Don't display any messages
-#REALLY_QUIET="yes"
+# REALLY_QUIET="yes"
 
+# Force checking if awffull is done with proper user rights
+FORCE_USER="stats"
