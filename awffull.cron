@@ -17,12 +17,6 @@ if [ -n "$ENABLE" ] && [ "$ENABLE" = "yes" -o "$ENABLE" = "YES" ]; then
 	export LANG
 	export LC_ALL
 	
-	if [ -n "$QUIET" ] && [ "$QUIET" = "yes" -o "$QUIET" = "YES" ]; then
-		AWFFULL_OPTS="-q"
-	elif [ -n "$REALLY_QUIET" ] && [ "$REALLY_QUIET" = "yes" -o "$REALLY_QUIET" = "YES" ]; then
-		AWFFULL_OPTS="-Q"
-	fi
-	
 	if [ -n "$MULTIPLE" ] && [ "$MULTIPLE" = "yes" -o "$MULTIPLE" = "YES" ]; then
 		for config in $(ls /etc/awffull/*.conf 2>/dev/null); do\
 			CONFIG_LIST="${CONFIG_LIST} ${config}"

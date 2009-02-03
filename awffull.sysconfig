@@ -16,11 +16,5 @@ MULTIPLE="yes"
 # Warning: you need to install dnshistory package to have it working!
 # USE_DNSHISTORY="yes"
 
-# Supress messages
-# QUIET="yes"
-
-# Don't display any messages
-# REALLY_QUIET="yes"
-
 # Force checking if awffull is done with proper user rights
 FORCE_USER="stats"
