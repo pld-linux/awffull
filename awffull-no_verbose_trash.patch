@@ -1,0 +1,10 @@
+--- ./src/output.c.org	2008-12-13 03:28:35.000000000 +0100
++++ ./src/output.c	2009-03-07 21:07:47.626561290 +0100
+@@ -3386,7 +3386,6 @@ write_main_index()
+                  buffer,                        /* graph title       */
+                  index_start, g_settings.settings.history_index + 1);
+ 
+-    ERRVPRINT(0, "Graph Done!\n");
+     /* now do html stuff... */
+     snprintf(index_fname, sizeof(index_fname), "index.%s", g_settings.settings.html_ext);
+ 
