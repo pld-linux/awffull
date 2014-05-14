@@ -5,7 +5,7 @@ Summary:	Web server log analysis program
 Summary(pl.UTF-8):	Program do analizy logów serwera WWW
 Name:		awffull
 Version:	3.10.2
-Release:	6
+Release:	7
 License:	GPL v3+
 Group:		Applications/Networking
 Source0:	http://www.stedee.id.au/files/%{name}-%{version}.tar.gz
@@ -14,7 +14,7 @@ Source1:	%{name}.sysconfig
 Source2:	%{name}.cron
 Source3:	%{name}.crontab
 Patch0:		%{name}-no_css_overwrite_warning.patch
-Patch1:		%{name}-geoip.patch 
+Patch1:		%{name}-geoip.patch
 Patch2:		%{name}-locale_names.patch
 Patch3:		%{name}-no_verbose_trash.patch
 URL:		http://www.stedee.id.au/awffull/
@@ -22,6 +22,7 @@ BuildRequires:	GeoIP-devel > 1.4.0-1
 BuildRequires:	gd-devel
 BuildRequires:	gettext-devel
 BuildRequires:	pcre-devel
+Suggests:	crondaemon
 Suggests:	dnshistory
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -58,11 +59,11 @@ install -d $RPM_BUILD_ROOT{%{_sysconfdir}/%{name},/etc/{sysconfig,cron.d},%{_sbi
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install sample.conf $RPM_BUILD_ROOT%{_sysconfdir}/%{name}.conf
-install contrib/%{name}_history_regen.pl $RPM_BUILD_ROOT%{_sbindir}
-install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/%{name}
-install %{SOURCE2} $RPM_BUILD_ROOT%{_sbindir}/%{name}.cron
-install %{SOURCE3} $RPM_BUILD_ROOT/etc/cron.d/%{name}
+cp -p sample.conf $RPM_BUILD_ROOT%{_sysconfdir}/%{name}.conf
+install -p contrib/%{name}_history_regen.pl $RPM_BUILD_ROOT%{_sbindir}
+cp -p %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/%{name}
+cp -p %{SOURCE2} $RPM_BUILD_ROOT%{_sbindir}/%{name}.cron
+cp -p %{SOURCE3} $RPM_BUILD_ROOT/etc/cron.d/%{name}
 
 %find_lang %{name}
 
