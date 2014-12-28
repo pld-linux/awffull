@@ -20,7 +20,7 @@ Patch3:		%{name}-no_verbose_trash.patch
 URL:		http://www.stedee.id.au/awffull/
 BuildRequires:	GeoIP-devel > 1.4.0-1
 BuildRequires:	gd-devel
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	pcre-devel
 Suggests:	crondaemon
 Suggests:	dnshistory
